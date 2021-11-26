@@ -36,6 +36,15 @@ testdata = {
             "humidity": 7.7,
         }
     ],
+    "X2B_400": [
+        {
+            "data": bytearray.fromhex(
+                "abab000a1200f31008f900000000000000321000fa10000000000000c20d0a"
+            ),
+            "temperature": 24.3,
+            "humidity": 1.0,
+        }
+    ],
 }
 
 
@@ -75,6 +84,14 @@ def test_parse_X2M_157(data):
     dataset = testdata["X2M_157"]
     for data in dataset:
         result = drstorage.models.X2M_157.parse(data["data"])
+        assert result
+        assert result.temperature == data["temperature"]
+        assert result.humidity == data["humidity"]
+
+def test_parse_X2B_400(data):
+    dataset = testdata["X2B_400"]
+    for data in dataset:
+        result = drstorage.models.X2B_400.parse(data["data"])
         assert result
         assert result.temperature == data["temperature"]
         assert result.humidity == data["humidity"]

@@ -35,6 +35,7 @@ Container:     humidity = 7.1    temperature = 19.7    model = 600
 - `F1_600`
 - `F1_1200`
 - `X2M_157`
+- `X2B_400`
 
 ## Installation
 
